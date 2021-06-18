@@ -54,6 +54,7 @@ error: false
                 {errorMsg}
                 {spinner}
                 {content}
+               
             </div>
         );
     }
@@ -93,6 +94,7 @@ const View = ({char}) =>{
                 <span> {tvSeries} </span>
                 </li>
                 </ul>
+                
     </div>
     )
 }

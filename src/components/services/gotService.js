@@ -20,6 +20,7 @@ export default class gotService {
  //можно и без переменной просто ретурнить с this.getResource
  async getAllChar() {
   const res= await this.getResource(`/characters?page=5`);
+  
   return res.map(this._transformChar)
  }
  async getChar(id) {
@@ -40,17 +41,19 @@ export default class gotService {
  }
 
  _transformChar(char) {
+  
   return {
-   name: char.name,
-   gender: char.gender,
-   born: char.born,
-   died: char.died,
-   culture: char.culture,
-   tvSeries: char.tvSeries
+   name: this._fillElem(char.name),
+   gender: this._fillElem(char.gender),
+   born: this._fillElem(char.born),
+   died: this._fillElem(char.died),
+   culture: this._fillElem(char.culture),
+   tvSeries: this._fillElem(char.tvSeries)
   }
  }
 
  _transformHouse(house){
+  
   return{
    name: house.name,
    region: house.region,
@@ -61,11 +64,16 @@ export default class gotService {
   }
  }
  _transformBook(book){
-  return{
+  
+   return{
    name: book.name,
    numberOfPages: book.numberOfPages,
    publiser: book.publiser,
    released: book.released
   }
+ }
+ _fillElem = (item)=>{
+  if(!item){return `Нет данных`} else return item
+  
  }
 }
