@@ -40,7 +40,7 @@ export default class gotService {
   return this.getResource(`/books/${id}`)
  }
 
- _transformChar(char) {
+ _transformChar =(char)=> {
   
   return {
    name: this._fillElem(char.name),

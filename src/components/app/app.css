@@ -1,0 +1,9 @@
+#randomCharBtn {
+ margin: 3rem; 
+text-align: center;
+padding: 15px 32px;
+display: block;
+background: #2522c7;
+color: #ffffff;
+border: none;
+}

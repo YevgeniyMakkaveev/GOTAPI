@@ -1,7 +1,12 @@
 import React from 'react'
+import img from './img.jpg'
 
 const ErrorMsg =()=>{
- return <span>Произошла ужасающая ошибка. </span>
+ return <div>
+  <img src={img} alt='Ошибка'></img>
+  <span>Произошла ужасающая ошибка. </span>
+
+ </div>
 
  
 }
