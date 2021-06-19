@@ -22,7 +22,8 @@ export default class CharDetails extends Component {
        if(!charId){return}
            this.gotService.getChar(charId).then((char)=>{this.setState({char})})
            
-    }
+  
+        }
 
     render() {
         if(!this.state.char){
