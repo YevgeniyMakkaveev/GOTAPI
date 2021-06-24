@@ -3,7 +3,7 @@ export default class gotService {
   this._apiBase = `https://www.anapioficeandfire.com/api`
  }
 
- async getResource(url) {
+  getResource = async (url)=> {
   const res = await fetch(`${this._apiBase}${url}`);
   if (!res.ok) {
    throw new Error(`Could not fetch ${url}` + `, recieved ${res.status}`)
@@ -18,25 +18,25 @@ export default class gotService {
  }
 
  //можно и без переменной просто ретурнить с this.getResource
- async getAllChar() {
+ getAllChar= async()=> {
   const res= await this.getResource(`/characters?page=5`);
   
   return res.map(this._transformChar)
  }
- async getChar(id) {
+ getChar = async (id)=> {
   const res = await this.getResource(`/characters/${id}`)
   return this._transformChar(res)
  }
- getAllHouses() {
-  return this.getResource(`/houses`)
+ getAllHouses = async ()=> {
+  return this.getResource(`/houses?page=1`)
  }
- getAllHouse(id) {
+ getHouse = async (id)=> {
   return this.getResource(`/house/${id}`)
  }
- getAllBooks() {
-  return this.getResource(`/books`)
+ getAllBooks = async ()=> {
+  return this.getResource(`/books?page=1`)
  }
- getBook(id) {
+ getBook = async (id)=> {
   return this.getResource(`/books/${id}`)
  }
 
@@ -52,7 +52,7 @@ export default class gotService {
   }
  }
 
- _transformHouse(house){
+ _transformHouse =(house)=>{
   
   return{
    name: house.name,
@@ -63,7 +63,7 @@ export default class gotService {
    ancestralWeapons: house.ancestralWeapons
   }
  }
- _transformBook(book){
+ _transformBook=(book)=>{
   
    return{
    name: book.name,
