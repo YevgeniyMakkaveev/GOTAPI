@@ -45,3 +45,7 @@ renderItems(arr) {
         );
     }
 }
+
+ItemList.defaultProps = {
+    onItemSelected: ()=>{}
+}

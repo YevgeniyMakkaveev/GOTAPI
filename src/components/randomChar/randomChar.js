@@ -24,7 +24,7 @@ error: false
 
     componentDidMount(){
          this.updateChar();
-        this.timerId =setInterval(this.updateChar, 15000)
+        this.timerId =setInterval(this.updateChar, this.props.interval) 
     }
 
     componentWillUnmount(){
@@ -64,6 +64,15 @@ error: false
                
             </div>
         );
+    }
+}
+RandomChar.defaultProps={
+    interval: 15000
+}
+RandomChar.propTypes ={
+    interval: (props, propName, componentName)=>{
+        const value = props(propName);
+        if(typeof value === 'number' && !isNaN(value)){return null} return new TypeError(` ${componentName}: ${propName} must be a number`)
     }
 }
 

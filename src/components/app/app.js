@@ -6,8 +6,9 @@ import CharPage from '../charPage/charPage';
 import './app.css'
 import ErrorMsg from '../errorMsg';
 import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+import CharDetails,{field} from '../charDetails';
 import gotService from '../services/gotService';
+
 
 export default class App extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ export default class App extends Component {
     render() {
 
         const { showRandom } = this.state
-        const showRanChar = showRandom ? <RandomChar /> : null
+        const showRanChar = showRandom ? <RandomChar/> : null
         const buttonText = showRandom ? "Hide" : "Show"
         if (this.state.error) { return <ErrorMsg /> }
 
