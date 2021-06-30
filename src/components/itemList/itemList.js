@@ -22,7 +22,7 @@ renderItems(arr) {
         const label = this.props.renderItem(item)
         return(<li key ={id}
         className="list-group-item"
-        onClick={()=>this.props.onItemSelected(41+i)}
+        onClick={()=>this.props.onItemSelected(i)}
         >
             {label}
             

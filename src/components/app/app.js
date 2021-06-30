@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Col, Row, Container } from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import CharPage from '../charPage/charPage';
+import CharPage from '../pages/charPage/charPage';
 import './app.css'
 import ErrorMsg from '../errorMsg';
-import ItemList from '../itemList';
-import CharDetails,{field} from '../charDetails';
-import gotService from '../services/gotService';
+import BookPage from '../pages/bookPage';
+import HousePage from '../pages/housePage';
 
 
 export default class App extends Component {
@@ -22,11 +21,7 @@ export default class App extends Component {
 
         this.toggleRandomChar = this.toggleRandomChar.bind(this)
     }
-    gotService=new gotService()
-    componentDidCatch() {
-        console.log('error')
-        this.setState({ error: true })
-    }
+
     toggleRandomChar() {
 
         this.setState(({ showRandom }) => {
@@ -57,22 +52,8 @@ export default class App extends Component {
                         </Col>
                     </Row>
                     <CharPage />
-                    <Row>
-                        <Col md='6'>
-                            <ItemList onItemSelected={this.onItemSelected}  getData={this.gotService.getAllBooks} renderItem={(item)=>`${item.name}`} />
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={this.state.selectedChar} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList onItemSelected={this.onItemSelected}  getData={this.gotService.getAllHouses} renderItem={(item)=>`${item.name}`}/>
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={this.state.selectedChar} />
-                        </Col>
-                    </Row>
+                    <BookPage/>
+                    <HousePage/>
                 </Container>
             </>
         );

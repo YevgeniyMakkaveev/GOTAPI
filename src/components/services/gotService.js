@@ -31,7 +31,7 @@ export default class gotService {
   return this.getResource(`/houses?page=1`)
  }
  getHouse = async (id)=> {
-  return this.getResource(`/house/${id}`)
+  return this.getResource(`/houses/${id}`)
  }
  getAllBooks = async ()=> {
   return this.getResource(`/books?page=1`)
@@ -55,21 +55,21 @@ export default class gotService {
  _transformHouse =(house)=>{
   
   return{
-   name: house.name,
-   region: house.region,
-   words: house.words,
-   titles: house.titles,
-   overlord: house.overlord,
-   ancestralWeapons: house.ancestralWeapons
+   name: this._fillElem(house.name),
+   region: this._fillElem(house.region),
+   words: this._fillElem(house.words),
+   titles: this._fillElem(house.titles),
+   overlord: this._fillElem(house.overlord),
+   ancestralWeapons: this._fillElem(house.ancestralWeapons)
   }
  }
  _transformBook=(book)=>{
   
    return{
-   name: book.name,
-   numberOfPages: book.numberOfPages,
-   publiser: book.publiser,
-   released: book.released
+   name: this._fillElem(book.name),
+   numberOfPages: this._fillElem(book.numberOfPages),
+   publiser: this._fillElem(book.publiser),
+   released: this._fillElem(book.released)
   }
  }
  _fillElem = (item)=>{

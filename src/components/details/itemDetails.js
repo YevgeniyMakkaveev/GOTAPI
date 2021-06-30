@@ -10,7 +10,7 @@ return (
     </li>
 )}
 export {Field}
-export default class CharDetails extends Component {
+export default class ItemDetails extends Component {
 
     gotService = new gotService()
     state = {
@@ -28,9 +28,9 @@ export default class CharDetails extends Component {
     }
 
     updateItem(){
-       const {selectedId}=this.props 
+       const {selectedId, getInfo}=this.props 
        if(!selectedId){return}
-           this.gotService.getChar(selectedId).then((item)=>{this.setState({item})}
+           getInfo(selectedId).then((item)=>{this.setState({item})}
            )}
 
     render() {
