@@ -7,10 +7,10 @@ import './app.css'
 import ErrorMsg from '../errorMsg';
 import BookPage from '../pages/bookPage';
 import HousePage from '../pages/housePage';
-import BooksItem from '../pages/bookItem';
+import {BooksItem, HouseItem, CharItem} from '../pages/ItemDetail';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-//25 101
+
 export default class App extends Component {
     constructor(props) {
         super(props)
@@ -54,15 +54,25 @@ export default class App extends Component {
                             </Col>
                         </Row>
                         <Route path='/' exact component={()=><h1 className="wellcome">Wellcome to GOT DB </h1>} />
-                        <Route path='/characters' component={CharPage}/>
 
-                        <Route path='/houses' component={HousePage}/>
+                        <Route path='/characters' exact component={CharPage}/>
+                        <Route path='/characters/:id' render={
+                            ({match})=>{
+                                const{id}=match.params
+                                return <CharItem charId={id}/>} }/>
+
+                        <Route path='/houses' exact component={HousePage}/>
+                         <Route path='/houses/:id' render={
+                            ({match})=>{
+                                const{id}=match.params
+                                return <HouseItem houseId={id}/>} }/>
+
                         <Route path='/books' exact component={BookPage} />
                         <Route path='/books/:id' render={
                             ({match})=>{
                                 const{id}=match.params
-                                return <BooksItem bookId={id}/>}
-                        }/>
+                                return <BooksItem bookId={id}/>} }/>
+
                     </Container>
                 </div>
             </Router>

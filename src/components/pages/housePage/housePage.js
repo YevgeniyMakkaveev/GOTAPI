@@ -1,15 +1,15 @@
 import React, {Component} from 'react'
-import RowBlock from '../../rowBlock';
 import ItemList from '../../itemList';
-import ItemDetails, {Field} from '../../details';
 import ErrorMsg from '../../errorMsg';
 import gotService from '../../services/gotService';
+import { withRouter } from 'react-router';
 
 
 
-export default class HousePage extends Component {
+ class HousePage extends Component {
  state={
-  selectedId: null
+  selectedId: null,
+  error: false
   
  }
  gotService= new gotService()
@@ -29,17 +29,12 @@ export default class HousePage extends Component {
 
  render(){
   if(this.state.error){return <ErrorMsg/>}
-    const itemList = (<ItemList onItemSelected={this.onItemSelected} getData={this.gotService.getAllHouses} renderItem={({name})=>`${name}`}/> )
-    const ItemDetail =(<ItemDetails selectedId={this.state.selectedId} getInfo ={this.gotService.getHouse}>
-        <Field  field="region" label="Region"/>
-        <Field  field="words" label="words"/>
-        <Field  field="overlord" label="overlord"/>
-        <Field  field="ancestralWeapons" label="ancestralWeapons"/>
-     </ItemDetails>)
+    
   return(
 
-    <RowBlock left={itemList} right={ItemDetail} />
+    <ItemList onItemSelected={(selectedId)=>this.props.history.push(`${selectedId+1}`)} getData={this.gotService.getAllHouses} renderItem={({name})=>`${name}`}/>
   )
  
 }
 } 
+export default withRouter(HousePage)
