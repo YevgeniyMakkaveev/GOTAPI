@@ -35,4 +35,4 @@ export default class CharPage extends Component{
   )
  
 }
-} 
+}
